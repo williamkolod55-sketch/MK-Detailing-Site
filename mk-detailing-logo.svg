@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52">
+  <!-- Three diagonal slash stripes: dark purple, mid purple, white -->
+  <!-- Forward-slash angle (~22°), spans full logo height -->
+  <polygon points="21,5 29,5 12,48 4,48"  fill="#3a006e"/>
+  <polygon points="31,5 39,5 22,48 14,48" fill="#6030b0"/>
+  <polygon points="41,5 49,5 32,48 24,48" fill="#ffffff"/>
+
+  <!-- Vertical purple divider -->
+  <line x1="57" y1="7" x2="57" y2="45" stroke="#6030b0" stroke-width="1.5"/>
+
+  <!-- MK — Arial Black white, textLength matches DETAILING -->
+  <text x="65" y="36"
+        font-family="'Arial Black', 'Arial', sans-serif"
+        font-weight="900"
+        font-size="34"
+        fill="#ffffff"
+        textLength="129"
+        lengthAdjust="spacingAndGlyphs">MK</text>
+
+  <!-- DETAILING — Rajdhani 600 purple, same textLength as MK -->
+  <text x="65" y="47"
+        font-family="'Rajdhani', 'Arial Narrow', 'Arial', sans-serif"
+        font-weight="600"
+        font-size="10"
+        fill="#7b35cc"
+        textLength="129"
+        lengthAdjust="spacingAndGlyphs">DETAILING</text>
+</svg>
