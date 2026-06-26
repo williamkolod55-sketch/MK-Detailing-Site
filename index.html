@@ -407,7 +407,7 @@
 
     .ba-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
@@ -420,6 +420,7 @@
       cursor: ew-resize;
       user-select: none;
       -webkit-user-select: none;
+      touch-action: none;
     }
 
     /* placeholder panels */
@@ -509,7 +510,7 @@
       font-size: .82rem;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 620px) {
       .ba-grid {
         grid-template-columns: 1fr;
         max-width: 440px;
@@ -874,38 +875,6 @@
         </div>
       </div>
 
-      <!-- Pair 3 -->
-      <div class="ba-wrap reveal reveal-d3">
-        <div class="ba-stage" data-slider>
-          <div class="after-panel">
-            <svg width="80%" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M18 58 L18 44 Q22 28 60 22 L80 16 Q110 12 130 16 L168 22 Q204 28 222 44 L222 58 Q222 64 216 64 L24 64 Q18 64 18 58Z" fill="#3a3a3a"/>
-              <path d="M60 22 L80 16 Q110 12 130 16 L168 22 L155 38 L75 38 Z" fill="#555" stroke="rgba(123,47,190,.5)" stroke-width="1"/>
-              <ellipse cx="68" cy="64" rx="14" ry="9" fill="#222" stroke="#444" stroke-width="2"/>
-              <ellipse cx="172" cy="64" rx="14" ry="9" fill="#222" stroke="#444" stroke-width="2"/>
-              <rect x="30" y="44" width="36" height="18" rx="3" fill="rgba(123,47,190,.18)" stroke="rgba(123,47,190,.4)" stroke-width="1"/>
-              <rect x="174" y="44" width="36" height="18" rx="3" fill="rgba(123,47,190,.18)" stroke="rgba(123,47,190,.4)" stroke-width="1"/>
-            </svg>
-            <span class="panel-lbl">After</span>
-          </div>
-          <div class="before-panel">
-            <svg width="80%" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M18 58 L18 44 Q22 28 60 22 L80 16 Q110 12 130 16 L168 22 Q204 28 222 44 L222 58 Q222 64 216 64 L24 64 Q18 64 18 58Z" fill="#3a3a3a"/>
-              <path d="M60 22 L80 16 Q110 12 130 16 L168 22 L155 38 L75 38 Z" fill="#555"/>
-              <ellipse cx="68" cy="64" rx="14" ry="9" fill="#222" stroke="#444" stroke-width="2"/>
-              <ellipse cx="172" cy="64" rx="14" ry="9" fill="#222" stroke="#444" stroke-width="2"/>
-              <rect x="30" y="44" width="36" height="18" rx="3" fill="rgba(255,255,255,.05)"/>
-              <rect x="174" y="44" width="36" height="18" rx="3" fill="rgba(255,255,255,.05)"/>
-            </svg>
-            <span class="panel-lbl">Before</span>
-          </div>
-          <div class="ba-handle" aria-hidden="true"></div>
-        </div>
-        <div class="ba-footer">
-          <span class="ba-tag b">Before</span>
-          <span class="ba-tag a">After</span>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1071,17 +1040,32 @@
       handle.style.left     = p + '%';
     }
 
-    /* pointer events (covers mouse + touch + pen) */
+    /* mouse / pen */
     stage.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch') return;
       active = true;
       stage.setPointerCapture(e.pointerId);
       slide(e.clientX);
     });
     stage.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
       if (active) slide(e.clientX);
     });
-    stage.addEventListener('pointerup',   () => active = false);
+    stage.addEventListener('pointerup',     () => active = false);
     stage.addEventListener('pointercancel', () => active = false);
+
+    /* touch */
+    stage.addEventListener('touchstart', e => {
+      active = true;
+      slide(e.touches[0].clientX);
+    }, { passive: true });
+    stage.addEventListener('touchmove', e => {
+      if (!active) return;
+      e.preventDefault();
+      slide(e.touches[0].clientX);
+    }, { passive: false });
+    stage.addEventListener('touchend',    () => active = false);
+    stage.addEventListener('touchcancel', () => active = false);
   });
 </script>
 </body>
