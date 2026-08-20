@@ -209,6 +209,23 @@
       .hero-call-btn { display: none !important; }
     }
 
+    /* hero split layout stacks vertically on mobile */
+    @media (max-width: 767px) {
+      #hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding: 130px 0 0;
+      }
+      .hero-media {
+        position: relative;
+        top: auto; right: auto;
+        width: 100%;
+        height: 45svh;
+      }
+      .hero-media-fade { display: none; }
+    }
+
     /* ── HERO ───────────────────────────────── */
     #hero {
       min-height: 100svh;
@@ -217,26 +234,30 @@
       position: relative;
       overflow: hidden;
       padding: 130px 0 80px;
+      padding-right: 46vw;
+      background: var(--black);
     }
 
-    .hero-bg {
+    .hero-media {
       position: absolute;
-      inset: 0;
+      top: 0; right: 0;
+      width: 46vw;
+      height: 100%;
       z-index: 0;
-      display: block;
+      overflow: hidden;
     }
-    .hero-bg-img {
+    .hero-media-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
     }
-    .hero-overlay {
+    .hero-media-fade {
       position: absolute;
-      inset: 0;
-      z-index: 1;
-      background-image: linear-gradient(to right, rgba(6,6,10,.85) 0%, rgba(6,6,10,.05) 60%);
+      top: 0; left: 0; bottom: 0;
+      width: 90px;
+      background: linear-gradient(to right, var(--black) 0%, transparent 100%);
       pointer-events: none;
     }
     .hero-glow {
@@ -770,14 +791,6 @@
 
 <!-- ══ HERO ══════════════════════════════════ -->
 <section id="hero">
-  <picture class="hero-bg" aria-hidden="true">
-    <source media="(max-width: 767px)" srcset="hero-mobile.webp" type="image/webp">
-    <source media="(max-width: 767px)" srcset="hero-mobile.jpg" type="image/jpeg">
-    <source srcset="hero-desktop.webp" type="image/webp">
-    <source srcset="hero-desktop.jpg" type="image/jpeg">
-    <img class="hero-bg-img" src="hero-desktop.jpg" alt="">
-  </picture>
-  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap">
@@ -803,6 +816,16 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="hero-media" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="hero-split-mobile.webp" type="image/webp">
+      <source media="(max-width: 767px)" srcset="hero-split-mobile.jpg" type="image/jpeg">
+      <source srcset="hero-split.webp" type="image/webp">
+      <source srcset="hero-split.jpg" type="image/jpeg">
+      <img class="hero-media-img" src="hero-split.jpg" alt="">
+    </picture>
+    <div class="hero-media-fade" aria-hidden="true"></div>
   </div>
   <div class="scroll-cue" aria-hidden="true">Scroll</div>
 </section>
