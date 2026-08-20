@@ -214,9 +214,31 @@
       padding: 130px 0 80px;
     }
 
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+    }
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-color: rgba(6,6,10,.25);
+      background-image: linear-gradient(to right, rgba(6,6,10,.92) 0%, rgba(6,6,10,.25) 75%);
+      pointer-events: none;
+    }
     .hero-glow {
       position: absolute;
       inset: 0;
+      z-index: 2;
       background:
         radial-gradient(ellipse 65% 55% at 72% 48%, rgba(123,47,190,.14) 0%, transparent 65%),
         radial-gradient(ellipse 40% 40% at 15% 75%, rgba(123,47,190,.08) 0%, transparent 55%);
@@ -225,6 +247,7 @@
     .hero-grid {
       position: absolute;
       inset: 0;
+      z-index: 2;
       background-image:
         linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
@@ -232,7 +255,7 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; max-width: 680px; }
+    .hero-content { position: relative; z-index: 3; max-width: 680px; }
 
     .hero-pill {
       display: inline-flex;
@@ -285,6 +308,7 @@
     /* scroll cue */
     .scroll-cue {
       position: absolute;
+      z-index: 3;
       bottom: 36px; left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -742,6 +766,14 @@
 
 <!-- ══ HERO ══════════════════════════════════ -->
 <section id="hero">
+  <picture class="hero-bg" aria-hidden="true">
+    <source media="(max-width: 767px)" srcset="hero-mobile.webp" type="image/webp">
+    <source media="(max-width: 767px)" srcset="hero-mobile.jpg" type="image/jpeg">
+    <source srcset="hero-desktop.webp" type="image/webp">
+    <source srcset="hero-desktop.jpg" type="image/jpeg">
+    <img class="hero-bg-img" src="hero-desktop.jpg" alt="">
+  </picture>
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap">
