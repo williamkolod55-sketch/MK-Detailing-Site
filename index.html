@@ -280,7 +280,12 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 3; max-width: 680px; }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+      padding-left: max(24px, calc((100vw - 1100px) / 2));
+    }
 
     .hero-pill {
       display: inline-flex;
