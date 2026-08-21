@@ -162,30 +162,48 @@
       transition: .3s;
     }
 
-    /* mobile menu overlay */
+    /* mobile menu — compact dropdown panel, anchored below header */
     .mob-menu {
       display: none;
       position: fixed;
       inset: 0;
-      background: var(--black);
+      background: rgba(0,0,0,.5);
       z-index: 199;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
     }
-    .mob-menu.open { display: flex; }
-    .mob-menu a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.6rem;
-      letter-spacing: .04em;
+    .mob-menu.open { display: block; }
+    .mob-panel {
+      position: absolute;
+      top: 76px;
+      right: 24px;
+      width: 280px;
+      max-width: calc(100vw - 48px);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 18px;
+      background: rgba(8,8,8,.93);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.5);
+    }
+    .mob-panel a.mob-link {
+      padding: 10px 4px;
+      font-size: 1rem;
+      letter-spacing: normal;
+      color: rgba(255,255,255,.8);
       transition: color .2s;
     }
-    .mob-menu a:hover { color: var(--gold); }
+    .mob-panel a.mob-link:hover { color: var(--gold); }
+    .mob-panel .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
     .mob-x {
       position: absolute;
-      top: 22px; right: 24px;
-      font-size: 1.8rem;
+      top: 14px; right: 16px;
+      font-size: 1.3rem;
       cursor: pointer;
     }
 
@@ -358,6 +376,9 @@
         max-width: none;
         margin-left: 0;
         padding-inline: 24px;
+      }
+      .hero-sub {
+        color: rgba(255,255,255,.92);
       }
     }
 
@@ -812,12 +833,14 @@
 
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mob-menu" role="dialog" aria-modal="true">
-  <span class="mob-x" id="mob-x" role="button" aria-label="Close menu">✕</span>
-  <a href="#services" class="mob-link">Services</a>
-  <a href="#gallery" class="mob-link">Gallery</a>
-  <a href="#why" class="mob-link">About</a>
-  <a href="#contact" class="mob-link">Contact</a>
-  <a href="https://app.squareup.com/appointments/book/ch1ps8st05mgjx/LQRBP78DH5PFP/start" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book Now</a>
+  <div class="mob-panel">
+    <span class="mob-x" id="mob-x" role="button" aria-label="Close menu">✕</span>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#gallery" class="mob-link">Gallery</a>
+    <a href="#why" class="mob-link">About</a>
+    <a href="#contact" class="mob-link">Contact</a>
+    <a href="https://app.squareup.com/appointments/book/ch1ps8st05mgjx/LQRBP78DH5PFP/start" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book Now</a>
+  </div>
 </div>
 
 <!-- ══ HERO ══════════════════════════════════ -->
@@ -1134,7 +1157,10 @@
 
   burger.addEventListener('click', () => mobMenu.classList.add('open'));
   mobX.addEventListener('click',   () => mobMenu.classList.remove('open'));
-  document.querySelectorAll('.mob-link').forEach(l =>
+  mobMenu.addEventListener('click', (e) => {
+    if (e.target === mobMenu) mobMenu.classList.remove('open');
+  });
+  document.querySelectorAll('#mob-menu a').forEach(l =>
     l.addEventListener('click', () => mobMenu.classList.remove('open'))
   );
 
