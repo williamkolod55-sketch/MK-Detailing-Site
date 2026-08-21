@@ -283,8 +283,8 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      max-width: 680px;
-      margin-left: max(24px, calc((100vw - 1100px) / 2 + 24px));
+      max-width: 860px;
+      margin-left: clamp(24px, 5vw, 110px);
     }
 
     .hero-pill {
@@ -313,7 +313,7 @@
 
     .hero-h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 11vw, 7.5rem);
+      font-size: clamp(4rem, 11vw, 9.5rem);
       line-height: .93;
       letter-spacing: .02em;
       margin-bottom: 22px;
