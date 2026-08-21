@@ -335,6 +335,32 @@
 
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
+    /* full-bleed hero on mobile — split-column rules above are overridden here
+       (placed after the base #hero/.hero-media rules so it wins the cascade) */
+    @media (max-width: 767px) {
+      #hero {
+        padding-right: 0;
+      }
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .hero-media::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(12,12,16,.9), rgba(12,12,16,.9));
+      }
+      .hero-content {
+        max-width: none;
+        margin-left: 0;
+        padding-inline: 24px;
+      }
+    }
+
     /* scroll cue */
     .scroll-cue {
       position: absolute;
