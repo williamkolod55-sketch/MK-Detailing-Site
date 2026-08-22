@@ -175,12 +175,12 @@
       position: absolute;
       top: 114px;
       right: 16px;
-      width: 240px;
+      width: 275px;
       max-width: calc(100vw - 32px);
-      height: auto;
+      height: 400px;
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      padding: 0 20px 20px;
       background: rgba(8,8,8,.93);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border);
@@ -190,23 +190,34 @@
     .mob-panel::before {
       content: '';
       position: absolute;
-      top: -9px;
-      right: 20px;
-      width: 14px;
-      height: 14px;
-      background: rgba(8,8,8,.93);
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-      transform: rotate(45deg);
+      top: -8px;
+      right: 13px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 8px solid var(--border);
+    }
+    .mob-panel::after {
+      content: '';
+      position: absolute;
+      top: -7px;
+      right: 14px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 7px solid rgba(8,8,8,.93);
     }
     .mob-panel a.mob-link {
       display: flex;
+      flex: 1;
       align-items: center;
       justify-content: center;
-      height: 56px;
       padding: 0;
-      font-size: 1rem;
-      letter-spacing: normal;
+      font-size: 1.1rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
       color: rgba(255,255,255,.8);
       transition: color .2s;
     }
@@ -218,10 +229,12 @@
       height: 1px;
       background: var(--border);
       margin: 12px 0;
+      flex-shrink: 0;
     }
     .mob-panel .btn {
       width: 100%;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     @media (max-width: 780px) {
