@@ -173,7 +173,7 @@
     .mob-menu.open { display: block; }
     .mob-panel {
       position: absolute;
-      top: 86px;
+      top: 114px;
       right: 16px;
       width: 220px;
       max-width: calc(100vw - 32px);
@@ -185,17 +185,6 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       box-shadow: 0 12px 32px rgba(0,0,0,.55);
-    }
-    .mob-panel::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      right: 20px;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 8px solid rgba(8,8,8,.93);
     }
     .mob-panel a.mob-link {
       padding: 14px 4px;
@@ -382,13 +371,13 @@
         inset: 0;
         background:
           linear-gradient(180deg,
-            rgba(8,8,12,.85) 0%,
-            rgba(8,8,12,.55) 45%,
-            rgba(8,8,12,.88) 100%),
+            rgba(8,8,12,.6) 0%,
+            rgba(8,8,12,.3) 45%,
+            rgba(8,8,12,.7) 100%),
           linear-gradient(90deg,
-            rgba(8,8,12,.75) 0%,
-            rgba(8,8,12,.35) 65%,
-            rgba(8,8,12,.15) 100%);
+            rgba(8,8,12,.45) 0%,
+            rgba(8,8,12,.15) 65%,
+            rgba(8,8,12,0) 100%);
       }
       .hero-content {
         max-width: none;
