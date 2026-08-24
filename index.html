@@ -779,6 +779,53 @@
       .why-layout { grid-template-columns: 1fr; gap: 48px; }
     }
 
+    /* ── FAQ ────────────────────────────────── */
+    #faq { padding: 108px 0; }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.065);
+      border-radius: 10px;
+      padding: 4px 24px;
+      transition: border-color .28s;
+    }
+    .faq-item:hover { border-color: var(--border); }
+    .faq-item summary {
+      padding: 20px 0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--white);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 0 22px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
     /* ── CONTACT ────────────────────────────── */
     #contact {
       padding: 108px 0;
@@ -1027,6 +1074,8 @@
       </div>
 
     </div>
+
+    <p class="reveal" style="text-align:center;margin-top:32px;font-size:.82rem;color:var(--muted);">Note: an outdoor water spigot and power outlet are required at the location.</p>
   </div>
 </section>
 
@@ -1096,16 +1145,16 @@
           <div class="stat-lbl">Vehicles Detailed</div>
         </div>
         <div class="stat reveal reveal-d2">
-          <div class="stat-num">✓</div>
-          <div class="stat-lbl">Same-Week Booking Available</div>
+          <div class="stat-num">Free</div>
+          <div class="stat-lbl">Quotes</div>
         </div>
         <div class="stat reveal reveal-d1">
           <div class="stat-num">100%</div>
           <div class="stat-lbl">Mobile — We Come To You</div>
         </div>
         <div class="stat reveal reveal-d2">
-          <div class="stat-num">1+</div>
-          <div class="stat-lbl">Years Serving Saratoga County</div>
+          <div class="stat-num">48hr</div>
+          <div class="stat-lbl">Booking Notice</div>
         </div>
       </div>
 
@@ -1127,19 +1176,56 @@
         <div class="point reveal reveal-d3">
           <div class="point-icon" aria-hidden="true">🛡️</div>
           <div>
-            <div class="point-title">Fully Insured &amp; Reliable</div>
-            <div class="point-desc">Punctual, professional, and fully insured. Your vehicle is in safe hands from start to finish.</div>
+            <div class="point-title">Owner-Operated</div>
+            <div class="point-desc">Every job is done by the owner himself, start to finish. No rotating crews, no subcontractors, no one you haven't met.</div>
           </div>
         </div>
         <div class="point reveal reveal-d1">
           <div class="point-icon" aria-hidden="true">📅</div>
           <div>
             <div class="point-title">Easy Online Booking</div>
-            <div class="point-desc">Book in under 2 minutes. Choose your package, pick a slot, and we handle everything else.</div>
+            <div class="point-desc">Book in under 2 minutes. Choose your package, pick a slot, and I'll confirm within 48 hours.</div>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-hdr reveal">
+      <p class="label">Common Questions</p>
+      <h2 class="heading">FAQ</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item reveal reveal-d1">
+        <summary>Do you need my water and power?</summary>
+        <p class="faq-answer">Yes. I need access to an outdoor water spigot and a standard power outlet at the location. If there's no water source available, I'm not able to complete the job, so please confirm before booking.</p>
+      </details>
+      <details class="faq-item reveal reveal-d1">
+        <summary>How long does a detail take?</summary>
+        <p class="faq-answer">Basic Wash runs 1.5 to 2 hours. Full Interior runs 2.5 to 3 hours. Full Detail runs 3.5 to 4 hours, and can go 5 to 6 on vehicles that need extra work.</p>
+      </details>
+      <details class="faq-item reveal reveal-d2">
+        <summary>What happens if it rains?</summary>
+        <p class="faq-answer">The job gets rescheduled at no charge. I'll reach out to find a new time that works.</p>
+      </details>
+      <details class="faq-item reveal reveal-d2">
+        <summary>Can you detail at an apartment complex?</summary>
+        <p class="faq-answer">Yes, as long as there's an accessible water source and outlet at the parking area.</p>
+      </details>
+      <details class="faq-item reveal reveal-d3">
+        <summary>Do you do trucks and SUVs?</summary>
+        <p class="faq-answer">Yes. Larger vehicles run about 10 to 20 percent more depending on size and condition.</p>
+      </details>
+      <details class="faq-item reveal reveal-d3">
+        <summary>How far in advance should I book?</summary>
+        <p class="faq-answer">48 hours notice is ideal so I can confirm the slot and plan the route.</p>
+      </details>
     </div>
   </div>
 </section>
