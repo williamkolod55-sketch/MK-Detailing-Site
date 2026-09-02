@@ -491,7 +491,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      align-items: start;
     }
 
     .card {
@@ -500,6 +499,8 @@
       border-radius: 10px;
       padding: 38px 30px 32px;
       position: relative;
+      display: flex;
+      flex-direction: column;
       transition: border-color .28s, transform .28s;
     }
     .card:hover {
@@ -576,7 +577,18 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-    .card-btn { width: 100%; justify-content: center; }
+    .addon-note {
+      font-size: .76rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: -18px;
+      margin-bottom: 22px;
+    }
+    .addon-highlight {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .card-btn { width: 100%; justify-content: center; margin-top: auto; }
 
     @media (max-width: 880px) {
       .cards {
@@ -1019,8 +1031,8 @@
       <div class="card reveal reveal-d1">
         <p class="tier">Tier 01</p>
         <h3 class="card-name">Basic Wash</h3>
-        <div class="price"><sup>$</sup>75</div>
-        <p class="price-note">Starting price · varies by vehicle size</p>
+        <div class="price"><sup>$</sup>75<span style="font-size:1.1rem;font-weight:400">+</span></div>
+        <p class="price-note">Starting price · varies by vehicle size &amp; condition</p>
         <div class="rule"></div>
         <ul class="feats">
           <li>Hand exterior wash &amp; rinse</li>
@@ -1038,8 +1050,8 @@
         <div class="pop-tag">Most Popular</div>
         <p class="tier">Tier 02</p>
         <h3 class="card-name">Full Interior</h3>
-        <div class="price"><sup>$</sup>150</div>
-        <p class="price-note">Starting price · varies by vehicle size</p>
+        <div class="price"><sup>$</sup>150<span style="font-size:1.1rem;font-weight:400">+</span></div>
+        <p class="price-note">Starting price · varies by vehicle size &amp; condition</p>
         <div class="rule"></div>
         <ul class="feats">
           <li>Deep vacuum — seats, carpet, trunk</li>
@@ -1051,6 +1063,7 @@
           <li>Air vent detailing</li>
           <li>Odor elimination treatment</li>
         </ul>
+        <p class="addon-note">Heavy pet hair removal: from <span class="addon-highlight">+$30</span><br>Heavy stains, smoke odor, or mud may add to the price. Send a photo for an exact quote.</p>
         <a href="https://app.squareup.com/appointments/book/ch1ps8st05mgjx/LQRBP78DH5PFP/start" target="_blank" rel="noopener noreferrer" class="btn btn-gold card-btn">Book Interior</a>
       </div>
 
@@ -1059,7 +1072,7 @@
         <p class="tier">Tier 03</p>
         <h3 class="card-name">Full Detail</h3>
         <div class="price"><sup>$</sup>250<span style="font-size:1.1rem;font-weight:400">+</span></div>
-        <p class="price-note">Starting price · varies by vehicle size</p>
+        <p class="price-note">Starting price · varies by vehicle size &amp; condition</p>
         <div class="rule"></div>
         <ul class="feats">
           <li>Everything in Basic + Interior</li>
