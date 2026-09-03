@@ -909,6 +909,18 @@
     .meta-item a { transition: color .2s; }
     .meta-item a:hover { color: var(--gold); }
 
+    /* ── FLEET (two-column) ────────────────── */
+    .fleet-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .fleet-right { display: flex; flex-direction: column; align-items: flex-start; }
+    @media (max-width: 880px) {
+      .fleet-layout { grid-template-columns: 1fr; gap: 32px; }
+    }
+
     /* ── FOOTER ─────────────────────────────── */
     footer {
       padding: 22px 0;
@@ -1263,14 +1275,18 @@
 <!-- ══ FLEET ══════════════════════════════════ -->
 <section id="fleet" style="padding:108px 0;">
   <div class="wrap">
-    <div class="contact-inner reveal" style="max-width:620px;">
-      <p class="label">Fleet &amp; Multi-Vehicle</p>
-      <h2 class="contact-h" style="font-size:clamp(2rem,5vw,3.68rem);">Managing a fleet or<br><span style="color:var(--gold)">multiple vehicles?</span></h2>
-      <p class="contact-sub">Company trucks, work vans, multi-car families — we quote fleet jobs separately. Larger fleets are completed faster with a two-person crew. Text us your vehicle count and we'll send a price and timeline.</p>
-      <div class="contact-btns" style="margin-bottom:0">
-        <a href="sms:+15183960878" class="btn btn-outline" style="font-size:.85rem;padding:11px 26px;">📱 Text for a Fleet Quote</a>
+    <div class="fleet-layout reveal">
+      <div class="fleet-left">
+        <p class="label">Fleet &amp; Multi-Vehicle</p>
+        <h2 class="contact-h" style="font-size:clamp(2rem,5vw,4.42rem);">Managing a fleet or<br><span style="color:var(--gold)">multiple vehicles?</span></h2>
+        <p class="contact-sub" style="margin-bottom:0">Company trucks, work vans, multi-car families — we quote fleet jobs separately. Larger fleets are completed faster with a two-person crew. Text us your vehicle count and we'll send a price and timeline.</p>
       </div>
-      <p style="margin-top:14px;font-size:clamp(.82rem, 1.18vw, .92rem);color:var(--muted);">or call/text <a href="tel:+15183960878" style="color:var(--gold-lt);">(518) 396-0878</a></p>
+      <div class="fleet-right">
+        <div class="contact-btns" style="margin-bottom:0">
+          <a href="sms:+15183960878" class="btn btn-outline" style="font-size:.85rem;padding:11px 26px;">📱 Text for a Fleet Quote</a>
+        </div>
+        <p style="margin-top:14px;font-size:clamp(.82rem, 1.18vw, .92rem);color:var(--muted);">or call/text <a href="tel:+15183960878" style="color:var(--gold-lt);">(518) 396-0878</a></p>
+      </div>
     </div>
   </div>
 </section>
