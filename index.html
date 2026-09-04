@@ -919,12 +919,16 @@
     .fleet-right { display: flex; flex-direction: column; align-items: center; }
     #fleet .label { font-size: 1.01rem; }
     #fleet .contact-sub { font-size: clamp(1.15rem, 1.68vw, 1.3rem); }
+    /* Extra break used only on narrow screens; desktop keeps its own <br>. */
+    #fleet .contact-h br.fleet-mobile-br { display: none; }
     @media (max-width: 880px) {
       .fleet-layout { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 767px) {
       #fleet .contact-h br { display: none; }
-      #fleet .contact-btns { width: 100%; margin-top: 20px; }
+      #fleet .contact-h br.fleet-mobile-br { display: inline; }
+      #fleet .contact-h { margin-bottom: 32px; }
+      #fleet .contact-btns { width: 100%; margin-top: 32px; }
       #fleet .btn { width: 100%; justify-content: center; text-align: center; }
       #fleet .fleet-right > p { margin-top: 20px !important; }
       #fleet .label { margin-top: 20px; }
@@ -1288,7 +1292,7 @@
     <div class="fleet-layout reveal">
       <div class="fleet-left">
         <p class="label">Fleet &amp; Multi-Vehicle</p>
-        <h2 class="contact-h" style="font-size:clamp(2rem,5vw,4.42rem);">Managing a fleet or <br><span style="color:var(--gold)">multiple vehicles?</span></h2>
+        <h2 class="contact-h" style="font-size:clamp(2rem,5vw,4.42rem);">Managing a fleet<br class="fleet-mobile-br"> or <br><span style="color:var(--gold)">multiple vehicles?</span></h2>
         <p class="contact-sub" style="margin-bottom:0;line-height:1.6">Company trucks, work vans, multi-car families. We quote fleet jobs separately. Larger fleets go faster with a two-person crew. Text your vehicle count and we'll send a price and timeline.</p>
       </div>
       <div class="fleet-right">
