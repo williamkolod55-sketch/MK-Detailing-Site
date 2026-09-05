@@ -609,15 +609,17 @@
 
     .ba-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .ba-wrap { border-radius: 10px; overflow: hidden; }
 
+    /* Square at every width: the source images are 1200x1200, so a square
+       stage fills edge to edge with no letterboxing and nothing cropped. */
     .ba-stage {
       position: relative;
-      aspect-ratio: 4/3;
+      aspect-ratio: 1/1;
       overflow: hidden;
       cursor: ew-resize;
       user-select: none;
@@ -625,8 +627,16 @@
       touch-action: pan-y;
     }
 
-    @media (max-width: 480px) {
-      .ba-stage { aspect-ratio: unset; height: 260px; }
+    /* Both panel images share one geometry so the two halves line up
+       exactly and nothing shifts or rescales while the handle moves. */
+    .after-panel > img,
+    .before-panel > img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     /* placeholder panels */
@@ -644,7 +654,6 @@
     .after-panel {
       background: radial-gradient(ellipse 80% 60% at 50% 60%, #140025 0%, #111 60%);
     }
-    .after-panel svg { filter: drop-shadow(0 0 18px rgba(123,47,190,.6)); }
     .after-panel .panel-lbl {
       font-size: .62rem;
       letter-spacing: .25em;
@@ -657,7 +666,6 @@
       background: radial-gradient(ellipse 80% 60% at 50% 60%, #111 0%, #080808 60%);
       clip-path: inset(0 50% 0 0);
     }
-    .before-panel svg { filter: saturate(.15) brightness(.55); }
     .before-panel .panel-lbl {
       font-size: .62rem;
       letter-spacing: .25em;
@@ -710,6 +718,12 @@
     }
     .ba-tag.b { color: rgba(255,255,255,.32); }
     .ba-tag.a { color: var(--gold); }
+    .ba-cap {
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.62);
+    }
 
     .gallery-note {
       margin-top: 10px;
@@ -1148,40 +1162,59 @@
 
     <div class="ba-grid">
 
-      <!-- Pair 1 -->
+      <!-- Pair 1: Cargo Area -->
       <div class="ba-wrap reveal reveal-d1">
         <div class="ba-stage" data-slider>
           <div class="after-panel" style="display:block;padding:0">
-            <img src="/truck1-after.jpg" alt="After" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+            <img src="/gx-cargo-after.jpg" alt="SUV cargo area after cleaning, carpet vacuumed and shampooed with the dirt and debris gone" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
           </div>
           <div class="before-panel" style="display:block;padding:0">
-            <img src="/truck1-before.jpg" alt="Before" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+            <img src="/gx-cargo-before.jpg" alt="SUV cargo area before cleaning, carpet covered in dirt and loose debris" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
           </div>
           <div class="ba-handle" aria-hidden="true"><span class="ba-handle-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 4L6 9l5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4l5 5-5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <div class="ba-footer">
           <span class="ba-tag b">Before</span>
+          <span class="ba-cap">Cargo Area</span>
           <span class="ba-tag a">After</span>
         </div>
       </div>
 
-      <!-- Pair 2 -->
+      <!-- Pair 2: Driver Footwell -->
       <div class="ba-wrap reveal reveal-d2">
         <div class="ba-stage" data-slider>
           <div class="after-panel" style="display:block;padding:0">
-            <img src="/truck2-after.jpg" alt="After" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+            <img src="/raptor-footwell-after.jpg" alt="Truck driver footwell after cleaning, floor mat and carpet vacuumed and shampooed" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
           </div>
           <div class="before-panel" style="display:block;padding:0">
-            <img src="/truck2-before.jpg" alt="Before" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+            <img src="/raptor-footwell-before.jpg" alt="Truck driver footwell before cleaning, floor mat and carpet caked with dried mud" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
           </div>
           <div class="ba-handle" aria-hidden="true"><span class="ba-handle-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 4L6 9l5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4l5 5-5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <div class="ba-footer">
           <span class="ba-tag b">Before</span>
+          <span class="ba-cap">Driver Footwell</span>
           <span class="ba-tag a">After</span>
         </div>
       </div>
 
+      <!-- Pair 3: Rear Hatch Panel -->
+      <div class="ba-wrap reveal reveal-d3">
+        <div class="ba-stage" data-slider>
+          <div class="after-panel" style="display:block;padding:0">
+            <img src="/gx-hatch-after.jpg" alt="SUV rear hatch interior panel after cleaning, trim wiped down and dressed" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+          </div>
+          <div class="before-panel" style="display:block;padding:0">
+            <img src="/gx-hatch-before.jpg" alt="SUV rear hatch interior panel before cleaning, trim streaked with grime and dust" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none">
+          </div>
+          <div class="ba-handle" aria-hidden="true"><span class="ba-handle-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 4L6 9l5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4l5 5-5 5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="ba-footer">
+          <span class="ba-tag b">Before</span>
+          <span class="ba-cap">Rear Hatch Panel</span>
+          <span class="ba-tag a">After</span>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -1400,13 +1433,19 @@
     const handle = stage.querySelector('.ba-handle');
     let active = false;
 
-    function slide(clientX) {
-      const r = stage.getBoundingClientRect();
-      let p = ((clientX - r.left) / r.width) * 100;
+    function setPos(p) {
       p = Math.min(Math.max(p, 4), 96);
       before.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
       handle.style.left     = p + '%';
     }
+
+    function slide(clientX) {
+      const r = stage.getBoundingClientRect();
+      setPos(((clientX - r.left) / r.width) * 100);
+    }
+
+    /* Load centered: clip and handle set from one value so they agree. */
+    setPos(50);
 
     /* mouse / pen */
     stage.addEventListener('pointerdown', e => {
