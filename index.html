@@ -720,12 +720,6 @@
     }
     .ba-tag.b { color: rgba(255,255,255,.32); }
     .ba-tag.a { color: var(--gold); }
-    .ba-cap {
-      font-size: .68rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.62);
-    }
 
     .gallery-note {
       margin-top: 10px;
@@ -739,6 +733,15 @@
         max-width: 440px;
         margin: 0 auto;
       }
+    }
+
+    /* The trimmed Call Now pill is about 121px wide at 20px from the right
+       edge, so it covers the right ~141px of the viewport at whatever
+       scroll position a footer passes through. The footer sits 24px in
+       from that edge, so reserve the difference plus slack and the AFTER
+       tag lands clear of it. Only two tags in this row, so there is room. */
+    @media (max-width: 620px) {
+      .ba-footer { padding-right: 136px; }
     }
 
     /* ── WHY US ─────────────────────────────── */
@@ -994,26 +997,14 @@
       box-shadow: 0 14px 34px rgba(123,47,190,.65);
     }
     @media (max-width: 620px) {
-      /* Icon only at phone width. The text label made the button wide
-         enough to cover the gallery footer captions as they scrolled past.
-         Same purple, shadow, bottom offset and safe-area inset as above. */
-      .float-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 56px;
-        height: 56px;
-        padding: 0;
-        border-radius: 50%;
-        font-size: 1.45rem;
-        line-height: 1;
-      }
-      .float-btn-text { display: none; }
-      /* The button still overlays the bottom of the page at full scroll,
-         and the copyright line wraps wide enough to run under it.
-         56px button + 22px bottom offset + 16px clearance, plus the same
-         safe-area inset the button uses. */
-      body { padding-bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+      /* Trimmed a little at phone width. Still the full labelled pill:
+         same glyph, same text, same purple, same href. */
+      .float-btn { display: flex; align-items: center; gap: 7px; padding: 11px 18px; }
+      /* The button is fixed, so at full scroll it overlays the bottom of
+         the page and the copyright line wraps wide enough to run under it.
+         46px trimmed button height + 22px bottom offset + 16px clearance,
+         plus the same safe-area inset the button uses. */
+      body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
     }
   </style>
 </head>
@@ -1198,7 +1189,6 @@
         </div>
         <div class="ba-footer">
           <span class="ba-tag b">Before</span>
-          <span class="ba-cap">Cargo Area</span>
           <span class="ba-tag a">After</span>
         </div>
       </div>
@@ -1216,7 +1206,6 @@
         </div>
         <div class="ba-footer">
           <span class="ba-tag b">Before</span>
-          <span class="ba-cap">Driver Footwell</span>
           <span class="ba-tag a">After</span>
         </div>
       </div>
@@ -1234,7 +1223,6 @@
         </div>
         <div class="ba-footer">
           <span class="ba-tag b">Before</span>
-          <span class="ba-cap">Rear Hatch Panel</span>
           <span class="ba-tag a">After</span>
         </div>
       </div>
@@ -1416,7 +1404,9 @@
 </footer>
 
 <!-- FLOATING CALL (mobile only) -->
-<a href="tel:+15183960878" class="float-btn" aria-label="Call MK Detailing"><span aria-hidden="true">📞</span><span class="float-btn-text">&nbsp;Call Now</span></a>
+<a href="tel:+15183960878" class="float-btn" aria-label="Call MK Detailing">
+  📞 Call Now
+</a>
 
 <script>
   'use strict';
