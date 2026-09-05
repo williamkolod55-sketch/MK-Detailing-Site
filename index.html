@@ -170,12 +170,14 @@
     }
 
     /* mobile menu — compact dropdown panel, anchored below header */
+    /* Above the floating call button (300) so the overlay covers it
+       while the menu is open, not the other way round. */
     .mob-menu {
       display: none;
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,.5);
-      z-index: 201;
+      z-index: 400;
     }
     .mob-menu.open { display: block; }
     .mob-panel {
@@ -991,7 +993,28 @@
       transform: translateY(-2px);
       box-shadow: 0 14px 34px rgba(123,47,190,.65);
     }
-    @media (max-width: 620px) { .float-btn { display: flex; align-items: center; gap: 7px; } }
+    @media (max-width: 620px) {
+      /* Icon only at phone width. The text label made the button wide
+         enough to cover the gallery footer captions as they scrolled past.
+         Same purple, shadow, bottom offset and safe-area inset as above. */
+      .float-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+      .float-btn-text { display: none; }
+      /* The button still overlays the bottom of the page at full scroll,
+         and the copyright line wraps wide enough to run under it.
+         56px button + 22px bottom offset + 16px clearance, plus the same
+         safe-area inset the button uses. */
+      body { padding-bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+    }
   </style>
 </head>
 <body>
@@ -1393,9 +1416,7 @@
 </footer>
 
 <!-- FLOATING CALL (mobile only) -->
-<a href="tel:+15183960878" class="float-btn" aria-label="Call MK Detailing">
-  📞 Call Now
-</a>
+<a href="tel:+15183960878" class="float-btn" aria-label="Call MK Detailing"><span aria-hidden="true">📞</span><span class="float-btn-text">&nbsp;Call Now</span></a>
 
 <script>
   'use strict';
