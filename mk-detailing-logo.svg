@@ -10,7 +10,7 @@
   <!-- Vertical divider -->
   <line x1="162" y1="20" x2="162" y2="180" stroke="#4b0082" stroke-width="1.5"/>
 
-  <!-- MK — Arial Black, no external font dependency -->
+  <!-- MK: Arial Black, no external font dependency -->
   <text x="182" y="145"
         font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
         font-size="110"
@@ -18,7 +18,7 @@
         fill="#ffffff"
         letter-spacing="-2">MK</text>
 
-  <!-- DETAILING — spaced caps, same font family, purple -->
+  <!-- DETAILING: spaced caps, same font family, purple -->
   <text x="186" y="175"
         font-family="Arial, sans-serif"
         font-size="18"
